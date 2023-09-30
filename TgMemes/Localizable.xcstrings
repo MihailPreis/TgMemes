@@ -1,0 +1,22 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "welcome" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Add a widget with memes!**\nAnd you can close me, I'm just here to open links."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Добавь виджет с мемами!**\nА меня можешь закрыть, я тут просто так, для открывания ссылок."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

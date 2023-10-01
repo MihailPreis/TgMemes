@@ -96,10 +96,17 @@ struct MemesWidgetProvider: AppIntentTimelineProvider {
 			return MemeInfo(image: .invalidResponse(error), author: nil, views: nil, postURL: rootURL)
 		}
 		
+		#if os(macOS)
 		guard let image = NSImage(data: imageData) else {
 			NSLog("Invalid create image from data.")
 			return MemeInfo(image: .invalidResponse(NSError(domain: "Data convert", code: 3)), author: nil, views: nil, postURL: rootURL)
 		}
+		#elseif os(iOS)
+		guard let image = UIImage(data: imageData) else {
+			NSLog("Invalid create image from data.")
+			return MemeInfo(image: .invalidResponse(NSError(domain: "Data convert", code: 3)), author: nil, views: nil, postURL: rootURL)
+		}
+		#endif
 		
 		let postURL: URL? = URL(string: attributes.get(key: "href"))
 		let author: String? = try? lastItem.parent()?.getElementsByClass("tgme_widget_message_from_author").first()?.text()

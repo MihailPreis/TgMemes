@@ -9,7 +9,10 @@ import SwiftUI
 
 @main
 struct TgMemesApp: App {
+	#if os(macOS)
 	@NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+	#endif
+	
 	@Environment(\.openURL) var openURL
 	
 	var body: some Scene {
@@ -29,6 +32,7 @@ struct TgMemesApp: App {
 	}
 }
 
+#if os(macOS)
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ notification: Notification) {
 		guard
@@ -51,3 +55,4 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		true
 	}
 }
+#endif

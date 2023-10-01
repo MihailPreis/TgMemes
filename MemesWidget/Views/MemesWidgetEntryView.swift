@@ -21,9 +21,17 @@ struct MemesWidgetEntryView: View {
 				{
 					HStack(spacing: 0) {
 						Text(views)
+							#if os(macOS)
 							.font(.callout)
-						Image(systemName: "eye")
+							#elseif os(iOS)
 							.font(.caption)
+							#endif
+						Image(systemName: "eye")
+							#if os(macOS)
+							.font(.caption)
+							#elseif os(iOS)
+							.font(.caption2)
+							#endif
 							.bold()
 					}
 					.modifier(CustomCapsule())
@@ -37,7 +45,11 @@ struct MemesWidgetEntryView: View {
 					widgetFamily != .systemSmall
 				{
 					Text(author)
+						#if os(macOS)
 						.font(.callout)
+						#elseif os(iOS)
+						.font(.caption)
+						#endif
 						.modifier(CustomCapsule())
 						.padding(8)
 				}
@@ -48,6 +60,9 @@ struct MemesWidgetEntryView: View {
 					Text("Invalid Telegram channel tag or channel not public!")
 						.multilineTextAlignment(.center)
 						.foregroundStyle(.red)
+						#if os(iOS)
+						.font(.callout)
+						#endif
 						.modifier(CustomCapsule(mode: .error))
 						.padding()
 					
@@ -56,6 +71,9 @@ struct MemesWidgetEntryView: View {
 					Text("Something went wrong. We'll try again soon.")
 						.multilineTextAlignment(.center)
 						.foregroundStyle(.red)
+						#if os(iOS)
+						.font(.callout)
+						#endif
 						.modifier(CustomCapsule(mode: .error))
 						.padding()
 					
